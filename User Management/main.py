@@ -23,15 +23,40 @@ class User:
         print(f"Password: {self.password}")
         print(f"Status: {self.status}")
 
-def creat_user():
-    while True:
-        cln()
-        first_name = input("Enter First Name: ")
-        last_name = input("Enter Last Name: ")
-        email = input("Enter Email: ")
-        password = input("Enter Password: ")
-        return User(first_name, last_name, email, password)
+def create_user():
+    cln()
+    first_name = input("Enter First Name: ")
+    last_name = input("Enter Last Name: ")
+    email = input("Enter Email: ")
+    password = input("Enter Password: ")
+    return User(first_name, last_name, email, password)
 
 user_management = []
 
-        
+while True:
+    print("\nWelcome to User Management\n")
+    print("Choose an action:\n")
+    print("1. Add new User")
+    print("2. Display all Users")
+    print("3. Exit\n")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        user = create_user()
+        user_management.append(user)
+        print("User created successfully!")
+        delay(2)
+    elif choice == "2":
+        cln()
+        print("Displaying all users...")
+        delay(2)
+        for user in user_management:
+            user.display_user()
+            print("-" * 10)  # Print a number of dashes
+    elif choice == "3":
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice!")
+        delay(2)
+
+
